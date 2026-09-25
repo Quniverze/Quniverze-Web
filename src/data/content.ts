@@ -6,152 +6,146 @@ export interface NavItem {
 export interface ProductItem {
   id: string;
   name: string;
-  tagline: string;
+  positioning: string;
   description: string;
   ctaText: string;
-  status?: string;
-  badge?: string;
-  features?: string[];
-  metrics?: { label: string; value: string }[];
+  status: string;
+  capabilities: string[];
 }
 
 export interface ClientWorkItem {
   id: string;
   title: string;
-  category: string;
-  tagline: string;
-  image: string;
-  ctaText: string;
-  summary: string;
-  deliverables: string[];
+  businessType: string;
+  contribution: string;
+  description: string;
+  scope: string[];
   techStack: string[];
+  isCustomerProof?: boolean;
 }
 
 export interface ProcessStep {
   number: string;
   title: string;
+  triplet: string[];
   description: string;
 }
 
 export const NAV_LINKS: NavItem[] = [
   { label: 'Products', href: '#products' },
   { label: 'Work', href: '#work' },
+  { label: 'Process', href: '#process' },
   { label: 'About', href: '#about' },
-  { label: 'Careers', href: '#careers' },
+  { label: 'Contact', href: '#contact' },
 ];
 
-export const HERO_CONTENT = {
-  eyebrow: 'SOFTWARE PRODUCTS. DIGITAL SOLUTIONS.',
-  headline: 'We build software\nfor businesses.',
-  supporting: 'Quniverze builds and operates software products, while helping businesses turn ideas into useful digital products.',
-  primaryCta: 'Explore our products',
-  secondaryCta: 'Start a project',
-  imageBadge: {
-    lines: ['Ideas', 'Systems', 'Growth'],
-    footerTag: 'A MORE USEFUL\nDIGITAL TOMORROW'
-  },
-  lowerStrip: {
-    products: {
-      label: 'BUILDING',
-      sublabel: 'Our products',
-      items: [
-        { name: 'NivaOps', icon: 'nivaops' },
-        { name: 'Quniverze CRM', icon: 'crm' }
-      ]
+export const BRAND_IDENTITY = {
+  name: 'Quniverze',
+  tagline: 'Products. Services. Real impact.',
+  headline: 'We build software for businesses.',
+  supporting: 'Quniverze builds and operates software products and works selectively with businesses that need thoughtful digital products.',
+  heroCtaPrimary: 'Explore our products',
+  heroCtaSecondary: 'Work with us',
+  bannerStatement: 'Software for businesses that move forward.',
+};
+
+export const BUSINESS_MODEL = {
+  eyebrow: 'WHAT WE DO',
+  heading: 'Two primary business activities. One engineering standard.',
+  learningLoop: "We don't just build software for other people. We build software ourselves. We operate it. We learn from it. Then we apply that operational experience to selected client work.",
+  columns: [
+    {
+      title: 'PRODUCTS',
+      tagline: 'We build and operate software ourselves.',
+      description: 'Proprietary software products conceived, developed, deployed, and actively maintained by Quniverze for real-world operating environments.'
     },
-    clients: {
-      label: 'BUILDING FOR',
-      sublabel: 'Our clients',
-      items: [
-        { name: 'Boven', icon: 'boven' },
-        { name: 'IGCC', icon: 'igcc' },
-        { name: 'StayB', icon: 'stayb' }
-      ]
+    {
+      title: 'SELECTIVE WORK',
+      tagline: 'We build thoughtful digital products for selected businesses.',
+      description: 'Direct partnerships with focused companies that require robust digital products, critical business systems, or custom platforms.'
     }
-  }
+  ]
 };
 
 export const PRODUCTS_CONTENT = {
-  eyebrow: 'OUR PRODUCTS',
-  heading: 'Software we build and own.',
-  viewAllText: 'View all products →',
-  products: [
+  eyebrow: 'PRODUCTS',
+  heading: 'Software owned and operated by Quniverze.',
+  subheading: 'Products we run in the real world every day.',
+  items: [
     {
       id: 'nivaops',
       name: 'NivaOps',
-      tagline: 'The operating system for modern rental properties.',
-      description: 'Property management, simplified for a better guest experience.',
-      ctaText: 'Visit NivaOps →',
-      status: 'Live & Operating',
-      features: [
-        'Centralized multi-property calendar synchronization',
-        'Automated guest messaging and check-in workflows',
-        'Real-time occupancy and RevPAR analytics'
-      ],
-      metrics: [
-        { label: 'Active Properties', value: '1,400+' },
-        { label: 'Guest Check-ins', value: '85k+' },
-        { label: 'Uptime', value: '99.98%' }
+      positioning: 'Property operations software.',
+      description: 'NivaOps is software built and operated by Quniverze for modern rental-property operators.',
+      ctaText: 'Explore NivaOps',
+      status: 'Owned & Operated',
+      capabilities: [
+        'Central multi-unit calendar & reservation orchestration',
+        'Automated guest communication & digital access workflows',
+        'Direct property status, maintenance & occupancy management'
       ]
     },
     {
       id: 'quniverze-crm',
       name: 'Quniverze CRM',
-      tagline: 'A sales and project operating system for modern businesses.',
-      description: 'Built internally. Now evolving into a product for other teams.',
-      ctaText: 'Learn more →',
-      status: 'Internal Evolution / Early Access',
-      features: [
-        'Integrated deal pipeline and revenue velocity tracking',
-        'Unified client context with automated activity logging',
-        'Built-in project milestone and deliverable alignment'
-      ],
-      metrics: [
-        { label: 'Pipeline Velocity', value: '+34%' },
-        { label: 'Internal Users', value: 'Active' },
-        { label: 'Public Release', value: 'Q4 2026' }
+      positioning: 'Lead management software.',
+      description: 'A sales and project operating system built internally and currently evolving into a product for other teams.',
+      ctaText: 'Learn more',
+      status: 'Internal Evolution',
+      capabilities: [
+        'Structured lead tracking & inquiry qualification stages',
+        'Automated activity logging and interaction timelines',
+        'Integrated project deliverable & milestone alignment'
       ]
     }
   ]
 };
 
-export const CLIENT_WORK_CONTENT = {
-  eyebrow: 'CLIENT WORK',
-  heading: 'Digital products we’ve built for businesses.',
-  viewAllText: 'View all work →',
+export const CUSTOMER_PROOF_CONTENT = {
+  eyebrow: 'BUILT. OPERATED. USED.',
+  heading: 'Software in the real world.',
+  client: 'StayB',
+  businessType: 'Accommodation business',
+  relationship: 'Website by Quniverze. NivaOps customer.',
+  statement: 'Quniverze builds NivaOps. StayB is a real accommodation business that runs its operations on NivaOps and connects with guests through a bespoke website delivered by Quniverze.',
+  stats: [
+    { label: 'Operations Engine', value: 'NivaOps' },
+    { label: 'Digital Presence', value: 'StayB Platform' },
+    { label: 'Relationship', value: 'Active Customer' }
+  ]
+};
+
+export const SELECTIVE_WORK_CONTENT = {
+  eyebrow: 'SELECTIVE WORK',
+  heading: 'Digital products built for selected businesses.',
   items: [
     {
       id: 'boven-frontier',
       title: 'Boven Frontier',
-      category: 'Website / Digital Experience',
-      tagline: 'For those who move forward.',
-      image: '/images/boven-mountain.jpg',
-      ctaText: 'View project →',
-      summary: 'A high-performance digital commerce and brand experience built for a rugged outdoor apparel and expedition gear brand.',
-      deliverables: ['Digital Flagship Store', 'Interactive Storytelling', 'Mobile Commerce Architecture'],
-      techStack: ['Next.js', 'Tailwind CSS', 'Shopify Storefront API', 'Framer Motion']
+      businessType: 'Manufacturing & distribution / consumer hygiene / wholesale / international trade',
+      contribution: 'Digital product / website',
+      description: 'A robust international commercial platform and brand architecture designed for consumer hygiene and wholesale distribution channels.',
+      scope: ['International Flagship Storefront', 'Wholesale Product Architecture', 'Multi-region Brand Experience'],
+      techStack: ['Next.js', 'Tailwind CSS', 'Shopify Storefront API']
     },
     {
       id: 'igcc',
       title: 'IGCC',
-      category: 'Digital Experience',
-      tagline: 'Building Stronger Together',
-      image: '/images/igcc-architecture.jpg',
-      ctaText: 'View project →',
-      summary: 'A contemporary corporate web platform and stakeholder portal for an international construction and infrastructure group.',
-      deliverables: ['Corporate Web Platform', 'Investor Relations Portal', 'Project Showcase CMS'],
-      techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Headless CMS']
+      businessType: 'International Gemology Certification Center',
+      contribution: 'Card automation system',
+      description: 'An automated certificate card generation pipeline and verification database for international gemstone authentications.',
+      scope: ['Card Automation Pipeline', 'Secure Verification Engine', 'Corporate Stakeholder Portal'],
+      techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL']
     },
     {
       id: 'stayb',
       title: 'StayB',
-      category: 'Website / Digital Platform',
-      tagline: 'More than a stay. A place to belong.',
-      image: '/images/stayb-interior.jpg',
-      ctaText: 'View project →',
-      summary: 'An end-to-end direct booking engine and guest concierge experience for luxury serviced residences and boutique stays.',
-      deliverables: ['Direct Booking Engine', 'Guest Concierge App', 'Property Management Integration'],
-      techStack: ['React', 'Node.js', 'Tailwind CSS', 'PostgreSQL']
+      businessType: 'Accommodation business',
+      contribution: 'StayB website + NivaOps customer',
+      description: 'A direct booking engine and guest experience platform tightly integrated with the NivaOps operating system.',
+      scope: ['Direct Booking Engine', 'Guest Concierge Interface', 'NivaOps PMS Integration'],
+      techStack: ['React', 'Tailwind CSS', 'PostgreSQL', 'NivaOps API'],
+      isCustomerProof: true
     }
   ]
 };
@@ -159,72 +153,118 @@ export const CLIENT_WORK_CONTENT = {
 export const PROCESS_CONTENT = {
   eyebrow: 'HOW WE WORK',
   heading: 'Understand. Design. Build. Improve.',
-  statement: "We don't just deliver websites. We build digital systems that businesses can actually use.",
+  subheading: 'The 01 → 04 system guides every product and client engagement.',
   steps: [
     {
       number: '01',
-      title: 'Understand',
-      description: 'We listen, learn and define the real problem.'
+      title: 'UNDERSTAND',
+      triplet: ['Business.', 'Users.', 'Constraints.'],
+      description: 'We define the real problem before writing a line of code.'
     },
     {
       number: '02',
-      title: 'Design',
-      description: 'We create thoughtful, practical solutions.'
+      title: 'DESIGN',
+      triplet: ['Structure.', 'Experience.', 'Clarity.'],
+      description: 'We create thoughtful, practical architectures without unnecessary decoration.'
     },
     {
       number: '03',
-      title: 'Build',
-      description: 'We develop with quality and long-term value in mind.'
+      title: 'BUILD',
+      triplet: ['Reliable.', 'Maintainable.', 'Production-ready.'],
+      description: 'We engineer with long-term reliability and operational stability as non-negotiables.'
     },
     {
       number: '04',
-      title: 'Improve',
-      description: 'We iterate, support and help you grow.'
+      title: 'IMPROVE',
+      triplet: ['Measure.', 'Learn.', 'Iterate.'],
+      description: 'We stay accountable to real-world performance, user feedback, and uptime.'
+    }
+  ]
+};
+
+export const BRAND_VALUES = {
+  eyebrow: 'WHY QUNIVERZE',
+  heading: 'Product Owners First.',
+  statement: 'We understand uptime, retention and long-term maintainability.',
+  description: 'Quniverze does not only deliver software. We build products. We operate products. We maintain products. We improve products. This operating discipline shapes our approach to selective client work.',
+  values: [
+    {
+      title: 'Product Owners First',
+      detail: 'Operating our own software means we know what happens after launch. We design for maintenance, observability, and uptime.'
+    },
+    {
+      title: 'Selective Partnerships',
+      detail: 'We choose a limited number of engagements where software can create meaningful, measurable business impact.'
+    },
+    {
+      title: 'Real Impact',
+      detail: 'Software that moves businesses forward in the real world — no vanity features or fabricated claims.'
     }
   ]
 };
 
 export const ABOUT_CONTENT = {
-  eyebrow: 'OUR PHILOSOPHY',
-  heading: 'The dual nature of Quniverze.',
-  statement: 'We build our own products from problems we understand, and we work with businesses that need thoughtful digital solutions.',
+  eyebrow: 'ABOUT',
+  heading: 'What is Quniverze?',
+  body: 'Quniverze is a software company that builds and operates its own products while working selectively with businesses that need thoughtful digital products.',
   principles: [
     {
-      title: 'Product Owners First',
-      description: 'Operating our own software means we understand the real weight of uptime, user retention, and long-term maintainability.'
+      label: 'Owned Software',
+      text: 'Proprietary platforms built from problems we understand firsthand.'
     },
     {
-      title: 'Selective Partnerships',
-      description: 'We take on a limited number of client engagements where we can make a decisive, measurable technical and business impact.'
+      label: 'Delivered Systems',
+      text: 'Selected client partnerships engineered with the same rigor as our own products.'
+    },
+    {
+      label: 'Accountable Engineering',
+      text: 'Long-term operational support, not hit-and-run deliverables.'
     }
   ]
 };
 
-export const CTA_CONTENT = {
-  headline: 'Have something worth building?',
-  subtext: 'Tell us what you’re working on. We’d love to hear about it.',
-  primaryBtn: 'Start a conversation →',
-  secondaryBtn: 'Learn more',
-  image: '/images/cta-summit.jpg',
-  tagline: {
-    lines: ['Better ideas', 'Brighter businesses', 'A more useful tomorrow.'],
-    divider: '—'
-  }
+export const CONTACT_CONTENT = {
+  eyebrow: 'CONTACT',
+  heading: 'NEED SOFTWARE?',
+  subtext: "Tell us what you're building. If there is a meaningful problem to solve, let's talk.",
+  ctaText: 'Start a conversation'
 };
 
 export const FOOTER_CONTENT = {
   brand: 'Quniverze',
   tagline: 'Products. Services. Real impact.',
   copyright: '© 2026 Quniverze. All rights reserved.',
-  links: [
-    { label: 'Products', href: '#products' },
-    { label: 'Work', href: '#work' },
-    { label: 'About', href: '#about' },
-    { label: 'Careers', href: '#careers' }
-  ],
-  socials: [
-    { name: 'LinkedIn', href: 'https://linkedin.com' },
-    { name: 'X', href: 'https://x.com' },
-    { name: 'Instagram', href: 'https://instagram.com' }
+  columns: [
+    {
+      title: 'PRODUCTS',
+      links: [
+        { label: 'NivaOps', href: '#products' },
+        { label: 'Quniverze CRM', href: '#products' }
+      ]
+    },
+    {
+      title: 'SELECTIVE WORK',
+      links: [
+        { label: 'Boven Frontier', href: '#work' },
+        { label: 'IGCC', href: '#work' },
+        { label: 'StayB', href: '#work' }
+      ]
+    },
+    {
+      title: 'PROCESS',
+      links: [
+        { label: '01 Understand', href: '#process' },
+        { label: '02 Design', href: '#process' },
+        { label: '03 Build', href: '#process' },
+        { label: '04 Improve', href: '#process' }
+      ]
+    },
+    {
+      title: 'CONTACT',
+      links: [
+        { label: 'Start a conversation', href: '#contact' },
+        { label: 'About Quniverze', href: '#about' }
+      ]
+    }
   ]
 };

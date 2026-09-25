@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { X, ArrowRight, Check } from 'lucide-react';
 import type { ClientWorkItem } from '../data/content';
 
 interface ProjectModalProps {
@@ -28,60 +28,57 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ item, onClose, onInq
   if (!item) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#12151C]/75 backdrop-blur-sm animate-in fade-in duration-150">
       <div
-        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-xl bg-[#FFFFFF] rounded-xl shadow-2xl border border-[#E5E7EB] overflow-hidden flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
       >
-        {/* Banner Image */}
-        <div className="relative h-48 sm:h-56 w-full shrink-0 overflow-hidden">
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+        {/* Header */}
+        <div className="p-6 sm:p-8 border-b border-[#E5E7EB] flex items-start justify-between bg-[#F4F6F9]">
+          <div>
+            <div className="text-[10px] font-mono uppercase tracking-wider text-[#718096]">
+              {item.businessType}
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-[#12151C] tracking-tight mt-1">
+              {item.title}
+            </h3>
+            <div className="mt-2 text-xs font-mono text-[#3B82F6] font-semibold">
+              Contribution: {item.contribution}
+            </div>
+          </div>
           <button
             type="button"
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white/90 hover:text-white hover:bg-black/60 transition-colors backdrop-blur-sm"
+            className="p-1.5 text-[#12151C]/50 hover:text-[#12151C] rounded-lg hover:bg-[#E5E7EB] transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="absolute bottom-4 left-6 right-6">
-            <span className="text-[11px] font-semibold tracking-wider uppercase text-white/80">
-              {item.category}
-            </span>
-            <h3 className="text-2xl font-bold text-white tracking-tight mt-0.5">
-              {item.title}
-            </h3>
-          </div>
         </div>
 
-        {/* Body Content */}
+        {/* Content */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
           <div>
-            <h4 className="text-base font-semibold text-neutral-900 mb-1">
-              {item.tagline}
-            </h4>
-            <p className="text-sm text-neutral-600 leading-relaxed">
-              {item.summary}
+            <div className="text-[10px] font-mono uppercase text-[#718096] tracking-wider mb-2">
+              System Context
+            </div>
+            <p className="text-sm text-[#12151C]/80 leading-relaxed font-normal">
+              {item.description}
             </p>
           </div>
 
-          {/* Deliverables */}
+          {/* Scope Delivered */}
           <div>
-            <h5 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3">
-              Key Deliverables
-            </h5>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {item.deliverables.map((del) => (
-                <div key={del} className="flex items-center gap-2 text-xs font-medium text-neutral-700 bg-neutral-50 px-3 py-2 rounded-lg border border-neutral-200/60">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>{del}</span>
+            <div className="text-[10px] font-mono uppercase text-[#718096] tracking-wider mb-3">
+              Delivered System Scope
+            </div>
+            <div className="space-y-2">
+              {item.scope.map((s) => (
+                <div key={s} className="flex items-center gap-2 text-xs text-[#12151C]/85">
+                  <Check className="w-4 h-4 text-[#3B82F6] shrink-0" />
+                  <span>{s}</span>
                 </div>
               ))}
             </div>
@@ -89,14 +86,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ item, onClose, onInq
 
           {/* Tech Stack */}
           <div>
-            <h5 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2.5">
+            <div className="text-[10px] font-mono uppercase text-[#718096] tracking-wider mb-2">
               Technology Stack
-            </h5>
-            <div className="flex flex-wrap gap-2">
+            </div>
+            <div className="flex flex-wrap gap-1.5">
               {item.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs font-medium bg-neutral-100 text-neutral-800 px-2.5 py-1 rounded-md border border-neutral-200"
+                  className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F4F6F9] text-[#718096] border border-[#E5E7EB]"
                 >
                   {tech}
                 </span>
@@ -104,12 +101,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ item, onClose, onInq
             </div>
           </div>
 
-          {/* Footer Action */}
-          <div className="pt-4 border-t border-neutral-100 flex items-center justify-between">
+          {/* Actions */}
+          <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
             <button
               type="button"
               onClick={onClose}
-              className="text-xs font-semibold text-neutral-500 hover:text-neutral-900"
+              className="text-xs font-semibold text-[#718096] hover:text-[#12151C]"
             >
               Back to Overview
             </button>
@@ -119,10 +116,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ item, onClose, onInq
                 onClose();
                 onInquire();
               }}
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-lg bg-[#111827] text-white hover:bg-neutral-800 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-[#12151C] text-[#F4F6F9] hover:bg-[#232834]"
             >
               <span>Discuss a similar project</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#3B82F6]" />
             </button>
           </div>
         </div>

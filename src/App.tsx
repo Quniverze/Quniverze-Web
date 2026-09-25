@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { BusinessModelSection } from './components/BusinessModelSection';
 import { ProductSection } from './components/ProductSection';
+import { CustomerProofSection } from './components/CustomerProofSection';
 import { ClientWorkSection } from './components/ClientWorkSection';
 import { ProcessSection } from './components/ProcessSection';
 import { AboutSection } from './components/AboutSection';
@@ -19,69 +21,67 @@ export const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ClientWorkItem | null>(null);
 
   const handleOpenContact = (subject?: string) => {
-    setContactSubject(subject || 'Digital System / Platform');
+    setContactSubject(subject || 'General Inquiry');
     setIsContactOpen(true);
   };
 
-  const handleExploreProducts = () => {
-    const el = document.getElementById('products');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const handleLearnMore = () => {
-    const el = document.getElementById('about');
+  const handleScrollTo = (id: string) => {
+    const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F6F2] text-[#111827] selection:bg-neutral-900 selection:text-white">
-      {/* Top Navigation */}
-      <Navbar onOpenContact={() => handleOpenContact('New Project Inquiry')} />
+    <div className="min-h-screen flex flex-col bg-[#F4F6F9] text-[#12151C] font-sans selection:bg-[#12151C] selection:text-white">
+      {/* 01 Navigation */}
+      <Navbar onOpenContact={() => handleOpenContact('Direct Conversation')} />
 
-      {/* Main Page Flow */}
+      {/* Main Flow adhering to Section 27 Information Architecture */}
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* 02 Hero */}
         <Hero
-          onExploreProducts={handleExploreProducts}
-          onStartProject={() => handleOpenContact('New Project')}
+          onExploreProducts={() => handleScrollTo('products')}
+          onWorkWithUs={() => handleScrollTo('contact')}
         />
 
-        {/* Products Section */}
+        {/* 03 What We Do / Business Model */}
+        <BusinessModelSection
+          onExploreProducts={() => handleScrollTo('products')}
+          onExploreWork={() => handleScrollTo('work')}
+        />
+
+        {/* 04 Products (NivaOps, Quniverze CRM) */}
         <ProductSection
           onSelectProduct={(product) => setSelectedProduct(product)}
-          onViewAllProducts={handleExploreProducts}
         />
 
-        {/* Client Work Section */}
+        {/* 05 Real Software in Use / Customer Proof (StayB NivaOps Customer) */}
+        <CustomerProofSection
+          onLearnMore={() => handleScrollTo('work')}
+        />
+
+        {/* 06 Selective Work (Boven Frontier, IGCC, StayB) */}
         <ClientWorkSection
           onSelectProject={(project) => setSelectedProject(project)}
-          onViewAllWork={() => {
-            const el = document.getElementById('work');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
         />
 
-        {/* Process Section */}
+        {/* 07 How We Work (01 → 04 Process) */}
         <ProcessSection />
 
-        {/* About Company Statement */}
+        {/* 08 Why Quniverze & About */}
         <AboutSection />
 
-        {/* Final CTA Banner */}
+        {/* 09 Contact / Need Software? */}
         <CTASection
-          onStartConversation={() => handleOpenContact('Strategic Conversation')}
-          onLearnMore={handleLearnMore}
+          onStartConversation={() => handleOpenContact('Project Scoping')}
         />
       </main>
 
-      {/* Footer */}
+      {/* 10 Footer */}
       <Footer />
 
-      {/* Interactive Modals */}
+      {/* Interactive Inquiries & Deep-Dives */}
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
@@ -94,7 +94,7 @@ export const App: React.FC = () => {
         onInquire={() => {
           const prodName = selectedProduct?.name;
           setSelectedProduct(null);
-          handleOpenContact(`${prodName} Access`);
+          handleOpenContact(`${prodName} Inquiry`);
         }}
       />
 
@@ -104,7 +104,7 @@ export const App: React.FC = () => {
         onInquire={() => {
           const projName = selectedProject?.title;
           setSelectedProject(null);
-          handleOpenContact(`Inquiry related to ${projName}`);
+          handleOpenContact(`Discussion regarding ${projName}`);
         }}
       />
     </div>

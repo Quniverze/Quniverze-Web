@@ -1,54 +1,54 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
 import { PROCESS_CONTENT } from '../data/content';
 
 export const ProcessSection: React.FC = () => {
   return (
-    <section className="py-16 sm:py-24 border-t border-[#E5E7EB]">
+    <section id="process" className="py-16 sm:py-24 border-b border-[#E5E7EB] bg-[#FFFFFF]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div>
-            <div className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-neutral-500 mb-2">
-              {PROCESS_CONTENT.eyebrow}
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#111827] tracking-tight">
-              {PROCESS_CONTENT.heading}
-            </h2>
+        {/* Header */}
+        <div className="max-w-3xl mb-14">
+          <div className="text-xs font-mono font-medium tracking-wider uppercase text-[#12151C]/60 mb-2">
+            {PROCESS_CONTENT.eyebrow}
           </div>
-
-          <p className="text-sm text-neutral-600 max-w-xs leading-relaxed">
-            {PROCESS_CONTENT.statement}
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#12151C] tracking-tight">
+            {PROCESS_CONTENT.heading}
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-[#12151C]/70 font-normal">
+            {PROCESS_CONTENT.subheading}
           </p>
         </div>
 
-        {/* 4 Steps Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 relative">
-          {PROCESS_CONTENT.steps.map((step, idx) => (
-            <div key={step.number} className="relative flex flex-col justify-between pr-4">
+        {/* 4 Process Steps (01 → 04 Motif) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {PROCESS_CONTENT.steps.map((step) => (
+            <div
+              key={step.number}
+              className="bg-[#F4F6F9] rounded-xl border border-[#E5E7EB] p-7 flex flex-col justify-between hover:border-[#12151C]/30 transition-colors"
+            >
               <div>
-                {/* Step Number */}
-                <span className="text-xs font-mono font-medium text-neutral-400 block mb-3">
+                {/* Electric Blue Number Motif */}
+                <span className="text-3xl sm:text-4xl font-mono font-bold text-[#3B82F6] block mb-4 tracking-tighter">
                   {step.number}
                 </span>
 
-                {/* Step Title */}
-                <h3 className="text-base sm:text-lg font-bold text-[#111827] tracking-tight mb-2">
+                <h3 className="text-xl font-bold text-[#12151C] tracking-tight mb-4">
                   {step.title}
                 </h3>
 
-                {/* Step Description */}
-                <p className="text-sm text-[#4B5563] leading-relaxed">
-                  {step.description}
-                </p>
+                {/* Triplets */}
+                <div className="space-y-1 mb-6 text-sm font-semibold text-[#12151C]/90 font-mono">
+                  {step.triplet.map((t) => (
+                    <div key={t} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#12151C]" />
+                      <span>{t}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Chevron indicator pointing to next step on desktop */}
-              {idx < PROCESS_CONTENT.steps.length - 1 && (
-                <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 text-neutral-300 pointer-events-none">
-                  <ChevronRight className="w-5 h-5 stroke-[1.5]" />
-                </div>
-              )}
+              <p className="text-xs text-[#12151C]/70 pt-4 border-t border-[#E5E7EB] leading-relaxed font-normal">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>

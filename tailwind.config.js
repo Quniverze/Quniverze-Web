@@ -7,24 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          bg: '#F7F6F2',
-          surface: '#FFFFFF',
-          primary: '#111827',
-          secondary: '#4B5563',
-          muted: '#6B7280',
-          subtle: '#9CA3AF',
-          border: '#E5E7EB',
-          'border-subtle': '#ECEBE4',
-          accent: '#111827',
-          tag: '#F0EFEA'
-        }
+        graphite: '#12151C',
+        electric: '#3B82F6',
+        cloud: '#F4F6F9',
+        slate: '#E5E7EB',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['Space Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'monospace'],
       },
       letterSpacing: {
-        tighter: '-0.035em',
+        tighter: '-0.04em',
         tight: '-0.02em',
         widest: '0.15em',
       }

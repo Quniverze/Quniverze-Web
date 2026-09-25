@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import { X, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { X, ArrowRight, Check } from 'lucide-react';
 import type { ProductItem } from '../data/content';
-import { NivaOpsLogo, CrmLogo } from './BrandLogos';
-import { NivaOpsDashboardPreview, CrmDashboardPreview } from './ProductPreviews';
+import { NivaOpsInterfacePreview, CrmInterfacePreview } from './ProductPreviews';
 
 interface ProductModalProps {
   product: ProductItem | null;
@@ -31,35 +30,33 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, on
   const isNiva = product.id === 'nivaops';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#12151C]/75 backdrop-blur-sm animate-in fade-in duration-150">
       <div
-        className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-2xl bg-[#FFFFFF] rounded-xl shadow-2xl border border-[#E5E7EB] overflow-hidden flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
       >
         {/* Header */}
-        <div className="p-6 sm:p-8 border-b border-neutral-100 flex items-start justify-between bg-neutral-50/70">
+        <div className="p-6 sm:p-8 border-b border-[#E5E7EB] flex items-start justify-between bg-[#F4F6F9]">
           <div>
-            <div className="flex items-center gap-3">
-              {isNiva ? <NivaOpsLogo className="h-6 w-6" /> : <CrmLogo className="h-6 w-6" />}
-              {product.status && (
-                <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-neutral-200/70 text-neutral-700">
-                  {product.status}
-                </span>
-              )}
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-[#E5E7EB] text-[#12151C]">
+                {product.status}
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#111827] tracking-tight mt-3">
-              {product.tagline}
+            <h3 className="text-xl sm:text-2xl font-bold text-[#12151C] tracking-tight mt-2">
+              {product.name}
             </h3>
-            <p className="text-xs sm:text-sm text-neutral-600 mt-1">
-              {product.description}
+            <p className="text-xs font-mono text-[#718096] mt-0.5">
+              {product.positioning}
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-neutral-400 hover:text-neutral-800 rounded-lg hover:bg-neutral-200/50 transition-colors"
+            className="p-1.5 text-[#12151C]/50 hover:text-[#12151C] rounded-lg hover:bg-[#E5E7EB] transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -68,48 +65,38 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, on
 
         {/* Modal Body */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
-          {/* Live Preview Display */}
-          <div className="rounded-xl overflow-hidden border border-neutral-200 bg-[#FAF9F5] p-2">
-            {isNiva ? <NivaOpsDashboardPreview /> : <CrmDashboardPreview />}
+          <p className="text-sm text-[#12151C]/80 leading-relaxed font-normal">
+            {product.description}
+          </p>
+
+          {/* Interface Preview */}
+          <div className="rounded-xl overflow-hidden border border-[#E5E7EB]">
+            {isNiva ? <NivaOpsInterfacePreview /> : <CrmInterfacePreview />}
           </div>
 
-          {/* Key Capabilities */}
-          {product.features && (
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3">
-                Core Architectural Capabilities
-              </h4>
-              <div className="space-y-2">
-                {product.features.map((feat) => (
-                  <div key={feat} className="flex items-start gap-2.5 text-xs text-neutral-700">
-                    <CheckCircle2 className="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
+          {/* Capabilities */}
+          <div>
+            <div className="text-[10px] font-mono uppercase text-[#718096] tracking-wider mb-3">
+              Operational Capabilities
             </div>
-          )}
-
-          {/* Metrics */}
-          {product.metrics && (
-            <div className="grid grid-cols-3 gap-3 pt-2">
-              {product.metrics.map((m) => (
-                <div key={m.label} className="p-3 bg-neutral-50 rounded-lg border border-neutral-200/70 text-center">
-                  <div className="text-base sm:text-lg font-bold text-neutral-900">{m.value}</div>
-                  <div className="text-[10px] text-neutral-500 mt-0.5">{m.label}</div>
+            <div className="space-y-2">
+              {product.capabilities.map((cap) => (
+                <div key={cap} className="flex items-start gap-2.5 text-xs text-[#12151C]/85">
+                  <Check className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5" />
+                  <span>{cap}</span>
                 </div>
               ))}
             </div>
-          )}
+          </div>
 
           {/* Actions */}
-          <div className="pt-4 border-t border-neutral-100 flex items-center justify-between">
+          <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
             <button
               type="button"
               onClick={onClose}
-              className="text-xs font-semibold text-neutral-500 hover:text-neutral-900"
+              className="text-xs font-semibold text-[#718096] hover:text-[#12151C]"
             >
-              Back to Products
+              Back to Overview
             </button>
             <button
               type="button"
@@ -117,10 +104,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, on
                 onClose();
                 onInquire();
               }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-lg bg-[#111827] text-white hover:bg-neutral-800 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-[#12151C] text-[#F4F6F9] hover:bg-[#232834]"
             >
-              <span>{isNiva ? 'Request NivaOps Access' : 'Inquire Early CRM Access'}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>{isNiva ? 'Inquire About NivaOps' : 'Request CRM Access'}</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#3B82F6]" />
             </button>
           </div>
         </div>

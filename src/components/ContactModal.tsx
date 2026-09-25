@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { X, ArrowRight, Check } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -13,7 +13,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
     name: '',
     email: '',
     company: '',
-    projectType: defaultSubject || 'Digital System / Platform',
+    projectType: defaultSubject || 'Selective Digital Product',
     message: ''
   });
 
@@ -38,9 +38,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => {
-      // Allow user to see confirmation before closing or resetting
-    }, 400);
   };
 
   const handleReset = () => {
@@ -49,30 +46,30 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#12151C]/75 backdrop-blur-sm animate-in fade-in duration-150">
       <div
-        className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden"
+        className="relative w-full max-w-lg bg-[#FFFFFF] rounded-xl shadow-2xl border border-[#E5E7EB] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
       >
         {/* Header */}
-        <div className="p-6 sm:p-8 border-b border-neutral-100 flex items-start justify-between">
+        <div className="p-6 sm:p-8 border-b border-[#E5E7EB] flex items-start justify-between bg-[#F4F6F9]">
           <div>
-            <div className="text-[11px] font-semibold uppercase tracking-widest text-neutral-400">
-              Quniverze Direct
+            <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#3B82F6]">
+              DIRECT ENGAGEMENT
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#111827] tracking-tight mt-1">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#12151C] tracking-tight mt-1">
               Start a conversation.
             </h3>
-            <p className="text-xs sm:text-sm text-neutral-500 mt-1">
-              Tell us what you're working on. We'll get back to you promptly.
+            <p className="text-xs text-[#718096] mt-1 font-normal">
+              Tell us what you're building. We review inquiries directly.
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-neutral-400 hover:text-neutral-800 rounded-lg hover:bg-neutral-100 transition-colors"
+            className="p-1.5 text-[#12151C]/50 hover:text-[#12151C] rounded-lg hover:bg-[#E5E7EB] transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -82,95 +79,94 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
         {/* Content */}
         <div className="p-6 sm:p-8">
           {submitted ? (
-            <div className="text-center py-8 space-y-4">
-              <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-6 h-6" />
+            <div className="text-center py-6 space-y-4">
+              <div className="w-10 h-10 bg-[#12151C] text-[#3B82F6] rounded-full flex items-center justify-center mx-auto">
+                <Check className="w-5 h-5 stroke-[2.5]" />
               </div>
-              <h4 className="text-lg font-bold text-neutral-900">Message Received</h4>
-              <p className="text-sm text-neutral-600 max-w-sm mx-auto leading-relaxed">
-                Thank you for reaching out. A partner from Quniverze will review your project requirements and connect with you shortly.
+              <h4 className="text-lg font-bold text-[#12151C]">Inquiry Received</h4>
+              <p className="text-xs sm:text-sm text-[#12151C]/75 max-w-sm mx-auto leading-relaxed">
+                Thank you. We review technical and product requirements carefully and will respond directly.
               </p>
               <button
                 type="button"
                 onClick={handleReset}
-                className="mt-4 px-6 py-2.5 text-sm font-semibold rounded-lg bg-[#111827] text-white hover:bg-neutral-800 transition-colors"
+                className="mt-4 px-5 py-2 text-xs font-semibold rounded-lg bg-[#12151C] text-[#F4F6F9] hover:bg-[#232834]"
               >
-                Done
+                Close
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
                     Your Name *
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Alex Mercer"
+                    placeholder="Jane Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#E5E7EB] text-[#12151C] focus:outline-none focus:border-[#3B82F6] bg-[#F4F6F9]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
+                  <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
                     Work Email *
                   </label>
                   <input
                     type="email"
                     required
-                    placeholder="alex@company.com"
+                    placeholder="jane@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#E5E7EB] text-[#12151C] focus:outline-none focus:border-[#3B82F6] bg-[#F4F6F9]"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                    Company / Organization
+                  <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
+                    Company
                   </label>
                   <input
                     type="text"
-                    placeholder="Acme Technologies"
+                    placeholder="Acme Systems"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#E5E7EB] text-[#12151C] focus:outline-none focus:border-[#3B82F6] bg-[#F4F6F9]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                    Project Interest
+                  <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
+                    Subject Area
                   </label>
                   <select
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent text-sm bg-white"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-[#E5E7EB] text-[#12151C] focus:outline-none focus:border-[#3B82F6] bg-[#F4F6F9]"
                   >
-                    <option value="Digital System / Platform">Digital System / Platform</option>
-                    <option value="Product Engineering">Product Engineering</option>
+                    <option value="Selective Digital Product">Selective Digital Product</option>
                     <option value="NivaOps Inquiry">NivaOps Inquiry</option>
                     <option value="Quniverze CRM Early Access">Quniverze CRM Early Access</option>
-                    <option value="Strategic Partnership">Strategic Partnership</option>
+                    <option value="General Conversation">General Conversation</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-neutral-700 mb-1">
-                  How can we help? *
+                <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
+                  Project Context *
                 </label>
                 <textarea
                   required
                   rows={3}
-                  placeholder="Describe your current systems, challenges, or goals..."
+                  placeholder="Outline the real problem or systems needed..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent text-sm resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-[#E5E7EB] text-[#12151C] focus:outline-none focus:border-[#3B82F6] bg-[#F4F6F9] resize-none"
                 />
               </div>
 
@@ -178,16 +174,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2.5 text-xs font-semibold text-neutral-600 hover:text-neutral-900"
+                  className="px-3.5 py-2 text-xs font-semibold text-[#718096] hover:text-[#12151C]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-lg bg-[#111827] text-white hover:bg-neutral-800 active:scale-[0.98] transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-lg bg-[#12151C] text-[#F4F6F9] hover:bg-[#232834]"
                 >
                   <span>Submit Inquiry</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-[#3B82F6]" />
                 </button>
               </div>
             </form>

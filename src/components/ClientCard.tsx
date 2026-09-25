@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import type { ClientWorkItem } from '../data/content';
 
 interface ClientCardProps {
@@ -11,50 +11,61 @@ export const ClientCard: React.FC<ClientCardProps> = ({ item, onSelect }) => {
   return (
     <div
       onClick={() => onSelect(item)}
-      className="group relative h-[420px] sm:h-[460px] rounded-2xl overflow-hidden cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-black/10 flex flex-col justify-between p-6 sm:p-7 transition-all duration-300"
+      className="group relative bg-[#FFFFFF] rounded-xl border border-[#E5E7EB] p-7 sm:p-8 flex flex-col justify-between hover:border-[#12151C]/40 transition-all duration-200 cursor-pointer shadow-sm"
     >
-      {/* Background Image with modern lazy loading */}
-      <img
-        src={item.image}
-        alt={item.title}
-        loading="lazy"
-        width={600}
-        height={800}
-        className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-      />
-
-      {/* Dark Vignette Overlay for Crisp Contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/60 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
-
-      {/* Top Header Row */}
-      <div className="relative z-10 flex items-start justify-between">
-        <div>
-          <h3 className="text-base sm:text-lg font-semibold text-white tracking-tight">
-            {item.title}
-          </h3>
-          <p className="text-xs text-white/70 mt-0.5 font-normal">
-            {item.category}
-          </p>
+      <div>
+        {/* Top Header */}
+        <div className="flex items-start justify-between pb-4 border-b border-[#E5E7EB]">
+          <div>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#718096]">
+              {item.businessType}
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-[#12151C] tracking-tight mt-1">
+              {item.title}
+            </h3>
+          </div>
+          <div className="w-7 h-7 rounded-lg bg-[#F4F6F9] border border-[#E5E7EB] flex items-center justify-center text-[#12151C] group-hover:bg-[#12151C] group-hover:text-white transition-colors">
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </div>
         </div>
 
-        <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white/80 group-hover:text-white group-hover:bg-white/20 group-hover:scale-105 transition-all">
-          <ArrowUpRight className="w-4 h-4" />
+        {/* Contribution Badge */}
+        <div className="my-4">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#F4F6F9] border border-[#E5E7EB] text-xs font-mono text-[#12151C]">
+            <span className="text-[#3B82F6] font-bold">Contribution:</span>
+            <span>{item.contribution}</span>
+          </div>
         </div>
-      </div>
 
-      {/* Middle Tagline */}
-      <div className="relative z-10 my-auto py-6">
-        <p className="text-lg sm:text-xl font-medium text-white/95 leading-snug tracking-tight max-w-[240px]">
-          {item.tagline}
+        {/* Project Description */}
+        <p className="text-sm text-[#12151C]/75 leading-relaxed font-normal">
+          {item.description}
         </p>
+
+        {/* Scope Checklist */}
+        <div className="mt-6 pt-4 border-t border-[#E5E7EB] space-y-2">
+          <div className="text-[10px] font-mono uppercase text-[#718096] tracking-wider mb-2">
+            Scope Delivered
+          </div>
+          {item.scope.map((s) => (
+            <div key={s} className="flex items-center gap-2 text-xs text-[#12151C]/85">
+              <span className="w-1 h-1 rounded-full bg-[#12151C]" />
+              <span>{s}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Bottom CTA */}
-      <div className="relative z-10 pt-4 border-t border-white/15 flex items-center justify-between">
-        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 group-hover:text-white transition-colors">
-          <span>{item.ctaText.replace(' →', '')}</span>
-          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-150" />
-        </span>
+      {/* Tech Stack Footer */}
+      <div className="mt-8 pt-4 border-t border-[#E5E7EB] flex flex-wrap gap-1.5">
+        {item.techStack.map((tech) => (
+          <span
+            key={tech}
+            className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F4F6F9] text-[#718096] border border-[#E5E7EB]"
+          >
+            {tech}
+          </span>
+        ))}
       </div>
     </div>
   );

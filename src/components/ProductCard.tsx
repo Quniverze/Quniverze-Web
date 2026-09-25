@@ -1,8 +1,7 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import type { ProductItem } from '../data/content';
-import { NivaOpsLogo, CrmLogo } from './BrandLogos';
-import { NivaOpsDashboardPreview, CrmDashboardPreview } from './ProductPreviews';
+import { NivaOpsInterfacePreview, CrmInterfacePreview } from './ProductPreviews';
 
 interface ProductCardProps {
   product: ProductItem;
@@ -15,41 +14,59 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
   return (
     <div
       onClick={() => onSelect(product)}
-      className="group relative bg-[#ECEBE4]/70 hover:bg-[#E7E6DE]/90 rounded-2xl border border-[#DFDED6] p-6 sm:p-8 hover:shadow-[0_8px_30px_rgba(0,0,0,0.03)] transition-all duration-300 flex flex-col justify-between cursor-pointer"
+      className="group relative bg-[#FFFFFF] rounded-xl border border-[#E5E7EB] p-6 sm:p-8 hover:border-[#12151C]/40 transition-all duration-200 flex flex-col justify-between cursor-pointer"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        {/* Left Info Column */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Left Column: Product Information */}
         <div className="lg:col-span-5 flex flex-col justify-between h-full py-1">
           <div>
-            {/* Product Header Logo */}
-            <div className="mb-5">
-              {isNiva ? <NivaOpsLogo className="h-6 w-6 text-xs" /> : <CrmLogo className="h-6 w-6" />}
+            {/* Status & Name */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-mono font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-[#E5E7EB] text-[#12151C]">
+                {product.status}
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
             </div>
 
-            {/* Headline */}
-            <h3 className="text-lg sm:text-xl font-bold text-[#111827] tracking-tight leading-snug">
-              {product.tagline}
+            <h3 className="text-2xl font-bold text-[#12151C] tracking-tight">
+              {product.name}
             </h3>
 
-            {/* Supporting text */}
-            <p className="mt-3 text-sm text-[#4B5563] leading-relaxed">
+            <div className="text-sm font-semibold text-[#12151C]/80 mt-1 font-mono">
+              {product.positioning}
+            </div>
+
+            <p className="mt-4 text-sm text-[#12151C]/70 leading-relaxed font-normal">
               {product.description}
             </p>
+
+            {/* Core Capabilities */}
+            <div className="mt-6 pt-5 border-t border-[#E5E7EB] space-y-2">
+              <div className="text-[10px] font-mono uppercase text-[#718096] tracking-wider mb-2">
+                Operational Capabilities
+              </div>
+              {product.capabilities.map((cap) => (
+                <div key={cap} className="flex items-start gap-2 text-xs text-[#12151C]/85">
+                  <Check className="w-3.5 h-3.5 text-[#3B82F6] shrink-0 mt-0.5" />
+                  <span>{cap}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Action Link */}
-          <div className="mt-8 pt-2">
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#111827] group-hover:text-neutral-700 transition-colors">
-              <span>{product.ctaText.replace(' →', '')}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+          <div className="mt-8 pt-4 border-t border-[#E5E7EB]">
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#12151C] group-hover:text-[#3B82F6] transition-colors">
+              <span>{product.ctaText}</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </div>
         </div>
 
-        {/* Right UI Preview Column */}
+        {/* Right Column: Real Interface Preview */}
         <div className="lg:col-span-7 w-full overflow-hidden">
-          <div className="transform group-hover:scale-[1.01] transition-transform duration-300">
-            {isNiva ? <NivaOpsDashboardPreview /> : <CrmDashboardPreview />}
+          <div className="transform group-hover:scale-[1.01] transition-transform duration-200">
+            {isNiva ? <NivaOpsInterfacePreview /> : <CrmInterfacePreview />}
           </div>
         </div>
       </div>

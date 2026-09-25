@@ -1,99 +1,127 @@
 import React from 'react';
-import { Calendar, Home, Key, BarChart3, Settings, TrendingUp } from 'lucide-react';
+import { QuniverzeWordmark } from './BrandLogos';
 
-export const NivaOpsDashboardPreview: React.FC = () => {
+export const QuniverzeOverviewDashboard: React.FC = () => {
   return (
-    <div className="w-full h-full min-h-[300px] bg-[#FAF9F5] rounded-xl border border-neutral-200/80 shadow-sm overflow-hidden flex flex-row text-xs select-none">
-      {/* Dark left sidebar */}
-      <div className="w-12 bg-[#1C2028] text-neutral-400 flex flex-col items-center py-4 justify-between shrink-0">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-6 h-6 rounded bg-white/10 text-white font-bold text-[10px] flex items-center justify-center">
-            N
-          </div>
-          <div className="w-7 h-[1px] bg-neutral-700/50 my-1" />
-          <div className="p-1.5 rounded-md bg-white/10 text-white cursor-pointer"><Home className="w-3.5 h-3.5" /></div>
-          <div className="p-1.5 rounded-md hover:text-white cursor-pointer"><Calendar className="w-3.5 h-3.5" /></div>
-          <div className="p-1.5 rounded-md hover:text-white cursor-pointer"><Key className="w-3.5 h-3.5" /></div>
-          <div className="p-1.5 rounded-md hover:text-white cursor-pointer"><BarChart3 className="w-3.5 h-3.5" /></div>
+    <div className="w-full bg-[#12151C] text-[#F4F6F9] rounded-xl border border-[#12151C] shadow-2xl overflow-hidden font-sans text-xs select-none">
+      {/* Top Window Bar */}
+      <div className="bg-[#12151C] px-4 py-2.5 border-b border-[#232834] flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#232834]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#232834]" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#232834]" />
         </div>
-        <div className="p-1.5 rounded-md hover:text-white cursor-pointer">
-          <Settings className="w-3.5 h-3.5" />
+        <div className="flex items-center gap-1.5 text-[11px] text-[#A0AEC0] font-mono">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+          <span>system.quniverze.internal</span>
         </div>
+        <div className="w-12" />
       </div>
 
-      {/* Main dashboard content */}
-      <div className="flex-1 p-4 flex flex-col justify-between overflow-hidden bg-white/60">
-        {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-neutral-100">
-          <div>
-            <div className="font-semibold text-neutral-900 text-sm">Good morning!</div>
-            <div className="text-[10px] text-neutral-400">14 units active today</div>
+      <div className="flex flex-row bg-[#F4F6F9] text-[#12151C] min-h-[340px]">
+        {/* Sidebar */}
+        <div className="w-40 bg-[#FFFFFF] border-r border-[#E5E7EB] p-3 flex flex-col justify-between hidden sm:flex shrink-0">
+          <div className="space-y-4">
+            <div className="px-2 pt-1">
+              <QuniverzeWordmark className="text-sm" />
+            </div>
+
+            <nav className="space-y-0.5 text-[11px]">
+              <div className="px-2.5 py-1.5 rounded-md bg-[#12151C] text-[#F4F6F9] font-medium flex items-center justify-between">
+                <span>Overview</span>
+                <span className="w-1 h-3 rounded-full bg-[#3B82F6]" />
+              </div>
+              <div className="px-2.5 py-1.5 rounded-md text-[#4A5568] hover:bg-[#F4F6F9]">Projects</div>
+              <div className="px-2.5 py-1.5 rounded-md text-[#4A5568] hover:bg-[#F4F6F9]">Clients</div>
+              <div className="px-2.5 py-1.5 rounded-md text-[#4A5568] hover:bg-[#F4F6F9]">Tasks</div>
+              <div className="px-2.5 py-1.5 rounded-md text-[#4A5568] hover:bg-[#F4F6F9]">Invoices</div>
+              <div className="px-2.5 py-1.5 rounded-md text-[#4A5568] hover:bg-[#F4F6F9]">Reports</div>
+            </nav>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <div className="w-6 h-6 rounded-full bg-neutral-200 text-[10px] font-medium text-neutral-700 flex items-center justify-center">
-              OP
+
+          <div className="px-2.5 py-2 border-t border-[#E5E7EB] text-[10px] text-[#718096] font-mono">
+            BUILD v4.0.8
+          </div>
+        </div>
+
+        {/* Dashboard Main Canvas */}
+        <div className="flex-1 p-5 flex flex-col justify-between overflow-hidden">
+          {/* Header */}
+          <div className="flex items-center justify-between pb-3 border-b border-[#E5E7EB]">
+            <div>
+              <h4 className="font-bold text-[#12151C] text-sm tracking-tight">Overview</h4>
+              <p className="text-[10px] text-[#718096]">Real-time operational systems</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#E5E7EB] text-[#12151C]">Live Node</span>
             </div>
           </div>
-        </div>
 
-        {/* Metrics Row */}
-        <div className="grid grid-cols-3 gap-2 my-3">
-          <div className="bg-white p-2.5 rounded-lg border border-neutral-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-            <div className="text-[18px] font-bold text-neutral-900 leading-none">12</div>
-            <div className="text-[10px] text-neutral-400 mt-1 font-medium">Bookings</div>
-          </div>
-          <div className="bg-white p-2.5 rounded-lg border border-neutral-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-            <div className="text-[18px] font-bold text-neutral-900 leading-none">28</div>
-            <div className="text-[10px] text-neutral-400 mt-1 font-medium">Guests</div>
-          </div>
-          <div className="bg-white p-2.5 rounded-lg border border-neutral-200/60 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-            <div className="text-[18px] font-bold text-emerald-600 leading-none">3</div>
-            <div className="text-[10px] text-neutral-400 mt-1 font-medium">Pending</div>
-          </div>
-        </div>
+          {/* Metric Cards */}
+          <div className="grid grid-cols-3 gap-2.5 my-3">
+            <div className="bg-[#FFFFFF] p-3 rounded-lg border border-[#E5E7EB]">
+              <div className="text-[10px] text-[#718096] uppercase font-mono tracking-wider">Total Projects</div>
+              <div className="text-xl font-bold text-[#12151C] mt-1 leading-none">12</div>
+              <div className="text-[9px] text-[#3B82F6] font-semibold mt-1.5">+33% active</div>
+            </div>
 
-        {/* Dynamic Occupancy Curve Graph */}
-        <div className="bg-white p-3 rounded-lg border border-neutral-200/60 flex-1 flex flex-col justify-between">
-          <div className="flex items-center justify-between text-[11px] mb-1">
-            <span className="font-medium text-neutral-700 flex items-center gap-1">
-              <TrendingUp className="w-3 h-3 text-emerald-600" /> Occupancy Trend
-            </span>
-            <span className="text-emerald-600 font-semibold text-[10px]">+18.4% this wk</span>
+            <div className="bg-[#FFFFFF] p-3 rounded-lg border border-[#E5E7EB]">
+              <div className="text-[10px] text-[#718096] uppercase font-mono tracking-wider">Active Clients</div>
+              <div className="text-xl font-bold text-[#12151C] mt-1 leading-none">8</div>
+              <div className="text-[9px] text-[#3B82F6] font-semibold mt-1.5">+14% retained</div>
+            </div>
+
+            <div className="bg-[#FFFFFF] p-3 rounded-lg border border-[#E5E7EB]">
+              <div className="text-[10px] text-[#718096] uppercase font-mono tracking-wider">Monthly Revenue</div>
+              <div className="text-xl font-bold text-[#12151C] mt-1 leading-none">₹ 2,48,000</div>
+              <div className="text-[9px] text-[#3B82F6] font-semibold mt-1.5">+19% MoM</div>
+            </div>
           </div>
 
-          <div className="relative w-full h-16 mt-1">
-            <svg viewBox="0 0 240 60" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="nivaGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.25" />
-                  <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M 0 45 C 30 45, 45 25, 75 30 C 105 35, 125 15, 155 20 C 185 25, 205 8, 240 12 L 240 60 L 0 60 Z"
-                fill="url(#nivaGradient)"
-              />
-              <path
-                d="M 0 45 C 30 45, 45 25, 75 30 C 105 35, 125 15, 155 20 C 185 25, 205 8, 240 12"
-                fill="none"
-                stroke="#10b981"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <circle cx="155" cy="20" r="3" fill="#10b981" stroke="#FFFFFF" strokeWidth="1.5" />
-              <circle cx="240" cy="12" r="3" fill="#10b981" stroke="#FFFFFF" strokeWidth="1.5" />
-            </svg>
-          </div>
+          {/* Recent Activity Table */}
+          <div className="bg-[#FFFFFF] rounded-lg border border-[#E5E7EB] p-3 flex-1 flex flex-col justify-between">
+            <div className="flex justify-between items-center text-[10px] font-mono uppercase text-[#718096] pb-2 border-b border-[#E5E7EB]">
+              <span>System & Engagement Activity</span>
+              <span>Timestamp</span>
+            </div>
 
-          <div className="flex justify-between text-[9px] text-neutral-400 pt-1 border-t border-neutral-100">
-            <span>Mon</span>
-            <span>Tue</span>
-            <span>Wed</span>
-            <span>Thu</span>
-            <span>Fri</span>
-            <span>Sat</span>
-            <span>Sun</span>
+            <div className="space-y-2 py-1 text-[11px]">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+                  <span className="font-semibold text-[#12151C]">NivaOps</span>
+                  <span className="text-[#718096]">Core reservation sync deployed</span>
+                </div>
+                <span className="text-[10px] font-mono text-[#718096]">2h ago</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#12151C]" />
+                  <span className="font-semibold text-[#12151C]">Boven Frontier</span>
+                  <span className="text-[#718096]">Wholesale catalog build review</span>
+                </div>
+                <span className="text-[10px] font-mono text-[#718096]">5h ago</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#12151C]" />
+                  <span className="font-semibold text-[#12151C]">IGCC</span>
+                  <span className="text-[#718096]">Card generation pipeline verification</span>
+                </div>
+                <span className="text-[10px] font-mono text-[#718096]">1d ago</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+                  <span className="font-semibold text-[#12151C]">StayB</span>
+                  <span className="text-[#718096]">NivaOps live guest integration active</span>
+                </div>
+                <span className="text-[10px] font-mono text-[#718096]">2d ago</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -101,90 +129,138 @@ export const NivaOpsDashboardPreview: React.FC = () => {
   );
 };
 
-export const CrmDashboardPreview: React.FC = () => {
+export const NivaOpsInterfacePreview: React.FC = () => {
   return (
-    <div className="w-full h-full min-h-[300px] bg-[#FAF9F5] rounded-xl border border-neutral-200/80 shadow-sm overflow-hidden flex flex-row text-xs select-none">
-      {/* Mini Sidebar */}
-      <div className="w-10 bg-neutral-100 border-r border-neutral-200/70 flex flex-col items-center py-3 gap-3 shrink-0">
-        <div className="w-5 h-5 rounded-full border border-neutral-800 flex items-center justify-center">
-          <div className="w-1.5 h-1.5 rounded-full bg-neutral-900" />
+    <div className="w-full bg-[#FFFFFF] rounded-xl border border-[#E5E7EB] shadow-sm overflow-hidden text-xs select-none">
+      {/* App Bar */}
+      <div className="bg-[#12151C] text-[#F4F6F9] px-4 py-2.5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded bg-[#3B82F6] flex items-center justify-center text-[9px] font-bold text-white">N</div>
+          <span className="font-semibold text-xs tracking-tight">NivaOps</span>
+          <span className="text-[9px] text-[#A0AEC0] font-mono">/ Properties</span>
         </div>
-        <div className="w-5 h-[1px] bg-neutral-300/60 my-1" />
-        <div className="w-2.5 h-2.5 rounded-sm bg-neutral-800" />
-        <div className="w-2.5 h-2.5 rounded-sm bg-neutral-400" />
-        <div className="w-2.5 h-2.5 rounded-sm bg-neutral-400" />
+        <div className="flex items-center gap-2 text-[10px] font-mono text-[#A0AEC0]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+          <span>Active PMS Node</span>
+        </div>
       </div>
 
-      {/* Main Kanban Content */}
-      <div className="flex-1 p-3.5 flex flex-col justify-between overflow-hidden bg-white/70">
-        {/* Top Header */}
-        <div className="flex items-center justify-between pb-2 mb-2 border-b border-neutral-200/60">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-neutral-900 text-xs">Pipeline: Q3 Revenue</span>
-            <span className="px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 text-[9px] font-medium border border-blue-200/60">Active</span>
+      <div className="p-4 bg-[#F4F6F9]">
+        {/* Status Bar */}
+        <div className="grid grid-cols-3 gap-2.5 mb-3">
+          <div className="bg-[#FFFFFF] p-2.5 rounded-lg border border-[#E5E7EB]">
+            <div className="text-[9px] text-[#718096] font-mono uppercase">Occupancy</div>
+            <div className="text-base font-bold text-[#12151C] mt-0.5">88.4%</div>
           </div>
-          <div className="text-[10px] text-neutral-500 font-medium">$218,500 Total</div>
-        </div>
-
-        {/* Kanban Columns */}
-        <div className="grid grid-cols-2 gap-2 flex-1">
-          {/* Column 1: Qualified */}
-          <div className="bg-neutral-100/70 p-2 rounded-lg border border-neutral-200/50 flex flex-col gap-1.5">
-            <div className="flex justify-between items-center text-[10px] font-semibold text-neutral-600 px-0.5">
-              <span>Discovery</span>
-              <span className="text-[9px] bg-neutral-200/80 px-1 rounded text-neutral-600">2</span>
-            </div>
-            
-            {/* Card 1 */}
-            <div className="bg-white p-2 rounded border border-neutral-200/70 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-              <div className="font-semibold text-neutral-800 text-[11px] truncate">Frontier Dynamics</div>
-              <div className="flex justify-between items-center mt-1.5 text-[9px] text-neutral-500">
-                <span className="font-semibold text-neutral-900">$34,000</span>
-                <span className="px-1 rounded bg-amber-50 text-amber-700 text-[8px]">In Review</span>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-white p-2 rounded border border-neutral-200/70 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-              <div className="font-semibold text-neutral-800 text-[11px] truncate">Helios Systems</div>
-              <div className="flex justify-between items-center mt-1.5 text-[9px] text-neutral-500">
-                <span className="font-semibold text-neutral-900">$52,000</span>
-                <span className="px-1 rounded bg-blue-50 text-blue-700 text-[8px]">Meeting</span>
-              </div>
-            </div>
+          <div className="bg-[#FFFFFF] p-2.5 rounded-lg border border-[#E5E7EB]">
+            <div className="text-[9px] text-[#718096] font-mono uppercase">Active Units</div>
+            <div className="text-base font-bold text-[#12151C] mt-0.5">14 Managed</div>
           </div>
-
-          {/* Column 2: Proposal / Closing */}
-          <div className="bg-neutral-100/70 p-2 rounded-lg border border-neutral-200/50 flex flex-col gap-1.5">
-            <div className="flex justify-between items-center text-[10px] font-semibold text-neutral-600 px-0.5">
-              <span>Proposal</span>
-              <span className="text-[9px] bg-neutral-200/80 px-1 rounded text-neutral-600">2</span>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white p-2 rounded border border-neutral-200/70 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-              <div className="font-semibold text-neutral-800 text-[11px] truncate">Apex Logistics</div>
-              <div className="flex justify-between items-center mt-1.5 text-[9px] text-neutral-500">
-                <span className="font-semibold text-emerald-700">$78,000</span>
-                <span className="px-1 rounded bg-emerald-50 text-emerald-700 text-[8px]">Signed</span>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-white p-2 rounded border border-neutral-200/70 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
-              <div className="font-semibold text-neutral-800 text-[11px] truncate">Verve Mobility</div>
-              <div className="flex justify-between items-center mt-1.5 text-[9px] text-neutral-500">
-                <span className="font-semibold text-neutral-900">$54,500</span>
-                <span className="px-1 rounded bg-purple-50 text-purple-700 text-[8px]">Final Deck</span>
-              </div>
-            </div>
+          <div className="bg-[#FFFFFF] p-2.5 rounded-lg border border-[#E5E7EB]">
+            <div className="text-[9px] text-[#718096] font-mono uppercase">Turnovers Today</div>
+            <div className="text-base font-bold text-[#3B82F6] mt-0.5">3 Scheduled</div>
           </div>
         </div>
 
-        {/* Footer status */}
-        <div className="pt-2 mt-1 border-t border-neutral-100 flex items-center justify-between text-[9px] text-neutral-400">
-          <span>Synced with Product Sprint 14</span>
-          <span className="text-neutral-500 font-medium">98.2% on schedule</span>
+        {/* Units Live Status Table */}
+        <div className="bg-[#FFFFFF] rounded-lg border border-[#E5E7EB] overflow-hidden">
+          <div className="px-3 py-2 border-b border-[#E5E7EB] flex justify-between items-center text-[10px] font-mono text-[#718096]">
+            <span>Unit / Property</span>
+            <span>Guest Workflow</span>
+            <span>Status</span>
+          </div>
+          <div className="divide-y divide-[#E5E7EB] text-[11px]">
+            <div className="px-3 py-2 flex items-center justify-between">
+              <div>
+                <span className="font-semibold text-[#12151C]">StayB Suite 01</span>
+                <span className="text-[10px] text-[#718096] block">2 Nights · 2 Guests</span>
+              </div>
+              <span className="text-[10px] font-mono text-[#718096]">Keycode Sent</span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#12151C] text-[#F4F6F9]">Checked In</span>
+            </div>
+
+            <div className="px-3 py-2 flex items-center justify-between">
+              <div>
+                <span className="font-semibold text-[#12151C]">StayB Villa West</span>
+                <span className="text-[10px] text-[#718096] block">4 Nights · 4 Guests</span>
+              </div>
+              <span className="text-[10px] font-mono text-[#718096]">Digital ID Verified</span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-medium border border-[#3B82F6] text-[#3B82F6]">Arriving Today</span>
+            </div>
+
+            <div className="px-3 py-2 flex items-center justify-between">
+              <div>
+                <span className="font-semibold text-[#12151C]">Harbor View Loft</span>
+                <span className="text-[10px] text-[#718096] block">Turnover inspection</span>
+              </div>
+              <span className="text-[10px] font-mono text-[#718096]">Housekeeping Assigned</span>
+              <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-[#E5E7EB] text-[#12151C]">Ready at 14:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const CrmInterfacePreview: React.FC = () => {
+  return (
+    <div className="w-full bg-[#FFFFFF] rounded-xl border border-[#E5E7EB] shadow-sm overflow-hidden text-xs select-none">
+      {/* App Bar */}
+      <div className="bg-[#12151C] text-[#F4F6F9] px-4 py-2.5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded-full border border-white/80 flex items-center justify-center">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+          </div>
+          <span className="font-semibold text-xs tracking-tight">Quniverze CRM</span>
+          <span className="text-[9px] text-[#A0AEC0] font-mono">/ Pipeline</span>
+        </div>
+        <div className="flex items-center gap-2 text-[10px] font-mono text-[#A0AEC0]">
+          <span>Lead Operations</span>
+        </div>
+      </div>
+
+      <div className="p-4 bg-[#F4F6F9]">
+        <div className="grid grid-cols-2 gap-3">
+          {/* Column 1 */}
+          <div className="bg-[#FFFFFF] p-2.5 rounded-lg border border-[#E5E7EB]">
+            <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E5E7EB]">
+              <span className="font-semibold text-[11px] text-[#12151C]">Discovery</span>
+              <span className="text-[10px] font-mono bg-[#E5E7EB] px-1.5 rounded text-[#12151C]">2</span>
+            </div>
+            <div className="space-y-2">
+              <div className="p-2 rounded border border-[#E5E7EB] bg-[#F4F6F9]">
+                <div className="font-semibold text-[11px] text-[#12151C]">Global Trade Logistics</div>
+                <div className="text-[10px] text-[#718096] mt-0.5">Platform architecture review</div>
+                <div className="text-[9px] font-mono text-[#3B82F6] mt-1">High Intent</div>
+              </div>
+              <div className="p-2 rounded border border-[#E5E7EB] bg-[#F4F6F9]">
+                <div className="font-semibold text-[11px] text-[#12151C]">Apex Consumer Goods</div>
+                <div className="text-[10px] text-[#718096] mt-0.5">System scope defined</div>
+                <div className="text-[9px] font-mono text-[#718096] mt-1">Follow-up scheduled</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2 */}
+          <div className="bg-[#FFFFFF] p-2.5 rounded-lg border border-[#E5E7EB]">
+            <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E5E7EB]">
+              <span className="font-semibold text-[11px] text-[#12151C]">Proposal & Scoping</span>
+              <span className="text-[10px] font-mono bg-[#E5E7EB] px-1.5 rounded text-[#12151C]">2</span>
+            </div>
+            <div className="space-y-2">
+              <div className="p-2 rounded border border-[#E5E7EB] bg-[#F4F6F9]">
+                <div className="font-semibold text-[11px] text-[#12151C]">Frontier Distribution</div>
+                <div className="text-[10px] text-[#718096] mt-0.5">Technical specification v1.2</div>
+                <div className="text-[9px] font-mono text-[#12151C] mt-1">Reviewing Architecture</div>
+              </div>
+              <div className="p-2 rounded border border-[#E5E7EB] bg-[#F4F6F9]">
+                <div className="font-semibold text-[11px] text-[#12151C]">Nordic Stay Co.</div>
+                <div className="text-[10px] text-[#718096] mt-0.5">NivaOps custom pilot scope</div>
+                <div className="text-[9px] font-mono text-[#3B82F6] mt-1">Contract Scoping</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
