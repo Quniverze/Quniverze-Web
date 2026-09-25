@@ -3,17 +3,17 @@ import { PROCESS_CONTENT } from '../data/content';
 
 export const ProcessSection: React.FC = () => {
   return (
-    <section id="process" className="py-20 sm:py-28 border-b border-[#E5E7EB] bg-white">
+    <section id="process" className="py-20 sm:py-28 border-b border-[#E5E7EB]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <div className="max-w-3xl mb-16 sm:mb-20">
-          <div className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-[#12151C]/60 mb-3">
+          <div className="text-[11px] font-mono font-medium tracking-[0.2em] uppercase text-[#12151C]/50 mb-3">
             {PROCESS_CONTENT.eyebrow}
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12151C] tracking-tight leading-[1.12]">
             {PROCESS_CONTENT.heading}
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#12151C]/75 font-normal leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-[#12151C]/70 font-normal leading-relaxed">
             {PROCESS_CONTENT.subheading}
           </p>
         </div>
@@ -38,12 +38,12 @@ export const ProcessSection: React.FC = () => {
                 </h3>
 
                 {/* Triplets */}
-                <div className="text-xs font-mono font-medium text-[#12151C]/60 mb-4 tracking-tight">
-                  {step.triplet.join('  ')}
+                <div className="text-xs font-mono font-medium text-[#12151C]/50 mb-4 tracking-tight">
+                  {step.triplet.join(' · ')}
                 </div>
               </div>
 
-              <p className="text-sm text-[#12151C]/75 leading-relaxed font-normal pt-4 border-t border-[#E5E7EB]/60">
+              <p className="text-sm text-[#12151C]/70 leading-relaxed font-normal pt-4 border-t border-[#E5E7EB]/60">
                 {step.description}
               </p>
             </div>

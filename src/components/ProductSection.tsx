@@ -9,23 +9,23 @@ interface ProductSectionProps {
 
 export const ProductSection: React.FC<ProductSectionProps> = ({ onSelectProduct }) => {
   return (
-    <section id="products" className="py-16 sm:py-24 border-b border-[#E5E7EB] bg-[#F4F6F9]">
+    <section id="products" className="py-20 sm:py-28 border-b border-[#E5E7EB]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <div className="text-xs font-mono font-medium tracking-wider uppercase text-[#12151C]/60 mb-2">
+        <div className="max-w-3xl mb-14 sm:mb-16">
+          <div className="text-[11px] font-mono font-medium tracking-[0.2em] uppercase text-[#12151C]/50 mb-3">
             {PRODUCTS_CONTENT.eyebrow}
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#12151C] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12151C] tracking-tight leading-[1.12]">
             {PRODUCTS_CONTENT.heading}
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#12151C]/70 font-normal">
+          <p className="mt-4 text-base sm:text-lg text-[#12151C]/70 font-normal">
             {PRODUCTS_CONTENT.subheading}
           </p>
         </div>
 
         {/* Product Cards Stack */}
-        <div className="space-y-8">
+        <div className="space-y-10 sm:space-y-12">
           {PRODUCTS_CONTENT.items.map((product) => (
             <ProductCard
               key={product.id}
