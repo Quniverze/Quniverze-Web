@@ -3,50 +3,47 @@ import { PROCESS_CONTENT } from '../data/content';
 
 export const ProcessSection: React.FC = () => {
   return (
-    <section id="process" className="py-16 sm:py-24 border-b border-[#E5E7EB] bg-[#FFFFFF]">
+    <section id="process" className="py-20 sm:py-28 border-b border-[#E5E7EB] bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="max-w-3xl mb-14">
-          <div className="text-xs font-mono font-medium tracking-wider uppercase text-[#12151C]/60 mb-2">
+        <div className="max-w-3xl mb-16 sm:mb-20">
+          <div className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-[#12151C]/60 mb-3">
             {PROCESS_CONTENT.eyebrow}
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#12151C] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12151C] tracking-tight leading-[1.12]">
             {PROCESS_CONTENT.heading}
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-[#12151C]/70 font-normal">
+          <p className="mt-4 text-base sm:text-lg text-[#12151C]/75 font-normal leading-relaxed">
             {PROCESS_CONTENT.subheading}
           </p>
         </div>
 
-        {/* 4 Process Steps (01 → 04 Motif) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {PROCESS_CONTENT.steps.map((step) => (
+        {/* 4 Process Steps: Typography, Numbering, Spacing & Hairline Dividers (No giant cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pt-10 border-t border-[#E5E7EB]">
+          {PROCESS_CONTENT.steps.map((step, idx) => (
             <div
               key={step.number}
-              className="bg-[#F4F6F9] rounded-xl border border-[#E5E7EB] p-7 flex flex-col justify-between hover:border-[#12151C]/30 transition-colors"
+              className={`flex flex-col justify-between ${
+                idx !== PROCESS_CONTENT.steps.length - 1 ? 'lg:border-r lg:border-[#E5E7EB] lg:pr-8' : ''
+              }`}
             >
               <div>
                 {/* Electric Blue Number Motif */}
-                <span className="text-3xl sm:text-4xl font-mono font-bold text-[#3B82F6] block mb-4 tracking-tighter">
+                <div className="text-3xl sm:text-4xl font-mono font-bold text-[#3B82F6] tracking-tighter">
                   {step.number}
-                </span>
+                </div>
 
-                <h3 className="text-xl font-bold text-[#12151C] tracking-tight mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#12151C] tracking-tight mt-4 mb-2">
                   {step.title}
                 </h3>
 
                 {/* Triplets */}
-                <div className="space-y-1 mb-6 text-sm font-semibold text-[#12151C]/90 font-mono">
-                  {step.triplet.map((t) => (
-                    <div key={t} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#12151C]" />
-                      <span>{t}</span>
-                    </div>
-                  ))}
+                <div className="text-xs font-mono font-medium text-[#12151C]/60 mb-4 tracking-tight">
+                  {step.triplet.join('  ')}
                 </div>
               </div>
 
-              <p className="text-xs text-[#12151C]/70 pt-4 border-t border-[#E5E7EB] leading-relaxed font-normal">
+              <p className="text-sm text-[#12151C]/75 leading-relaxed font-normal pt-4 border-t border-[#E5E7EB]/60">
                 {step.description}
               </p>
             </div>

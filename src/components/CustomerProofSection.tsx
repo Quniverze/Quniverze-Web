@@ -8,89 +8,107 @@ interface CustomerProofSectionProps {
 
 export const CustomerProofSection: React.FC<CustomerProofSectionProps> = ({ onLearnMore }) => {
   return (
-    <section className="py-16 sm:py-24 border-b border-[#E5E7EB] bg-[#FFFFFF]">
+    <section className="py-20 sm:py-28 border-b border-[#E5E7EB] bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Context & Relationship */}
-          <div className="lg:col-span-6">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-mono font-bold tracking-wider uppercase text-[#3B82F6]">
-                {CUSTOMER_PROOF_CONTENT.eyebrow}
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          {/* Left Column: Context & Proof */}
+          <div className="lg:col-span-6 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-[#3B82F6]">
+                  {CUSTOMER_PROOF_CONTENT.eyebrow}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#12151C] tracking-tight leading-[1.12]">
+                {CUSTOMER_PROOF_CONTENT.heading}
+              </h2>
+
+              <p className="mt-5 text-base sm:text-lg text-[#12151C]/75 leading-relaxed font-normal">
+                {CUSTOMER_PROOF_CONTENT.statement}
+              </p>
+
+              {/* Operational Verification Checklist */}
+              <div className="mt-8 pt-6 border-t border-[#E5E7EB] space-y-3.5">
+                <div className="flex items-start gap-3 text-sm text-[#12151C]">
+                  <Check className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-[#12151C]">NivaOps PMS: </span>
+                    <span className="text-[#12151C]/70">Centralized reservation orchestration, automated housekeeping turns, and direct occupancy control.</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 text-sm text-[#12151C]">
+                  <Check className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-semibold text-[#12151C]">Digital Web Platform: </span>
+                    <span className="text-[#12151C]/70">Direct-booking engine and guest experience architecture engineered by Quniverze.</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#12151C] tracking-tight">
-              {CUSTOMER_PROOF_CONTENT.heading}
-            </h2>
-
-            <p className="mt-4 text-base sm:text-lg text-[#12151C]/80 leading-relaxed font-normal">
-              {CUSTOMER_PROOF_CONTENT.statement}
-            </p>
-
-            <div className="mt-8 pt-6 border-t border-[#E5E7EB] space-y-3">
-              <div className="flex items-center gap-2.5 text-xs text-[#12151C]">
-                <Check className="w-4 h-4 text-[#3B82F6] shrink-0" />
-                <span className="font-semibold">NivaOps PMS:</span>
-                <span className="text-[#718096]">Active reservations and room turnover automation</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs text-[#12151C]">
-                <Check className="w-4 h-4 text-[#3B82F6] shrink-0" />
-                <span className="font-semibold">Digital Website:</span>
-                <span className="text-[#718096]">Bespoke direct-booking platform engineered by Quniverze</span>
-              </div>
-            </div>
-
-            <div className="mt-8">
+            <div className="mt-10">
               <button
                 type="button"
                 onClick={onLearnMore}
-                className="group inline-flex items-center gap-2 text-xs font-semibold text-[#12151C] hover:text-[#3B82F6] transition-colors"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-[#12151C] hover:text-[#3B82F6] transition-colors"
               >
                 <span>Read StayB case relationship</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
               </button>
             </div>
           </div>
 
-          {/* Right Column: Typographic & Structural Proof Card */}
+          {/* Right Column: Editorial Atmosphere & Operational Data */}
           <div className="lg:col-span-6">
-            <div className="bg-[#F4F6F9] rounded-xl border border-[#E5E7EB] p-8 shadow-sm">
-              <div className="flex items-center justify-between pb-4 border-b border-[#E5E7EB]">
-                <div>
-                  <span className="text-xl font-bold text-[#12151C] tracking-tight">StayB</span>
-                  <span className="text-xs font-mono text-[#718096] block mt-0.5">Accommodation Business</span>
+            <div className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] bg-[#F4F6F9] shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
+              {/* Architectural Interior Photo */}
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden">
+                <img
+                  src={CUSTOMER_PROOF_CONTENT.image}
+                  alt="StayB boutique accommodation interior running on NivaOps"
+                  loading="lazy"
+                  width={800}
+                  height={500}
+                  className="w-full h-full object-cover object-center grayscale-[10%] contrast-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12151C]/90 via-[#12151C]/30 to-transparent pointer-events-none" />
+                
+                {/* Floating Top Tag */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-2.5 py-1 rounded bg-[#12151C]/90 backdrop-blur-sm text-[10px] font-mono font-medium text-[#F4F6F9] border border-white/10 uppercase tracking-wider">
+                    Customer Proof · StayB
+                  </span>
                 </div>
-                <div className="px-2.5 py-1 rounded bg-[#12151C] text-[#F4F6F9] text-[10px] font-mono">
-                  ACTIVE CUSTOMER
-                </div>
-              </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-6">
-                {CUSTOMER_PROOF_CONTENT.stats.map((s) => (
-                  <div key={s.label} className="bg-[#FFFFFF] p-3 rounded-lg border border-[#E5E7EB]">
-                    <div className="text-[10px] font-mono text-[#718096] uppercase">{s.label}</div>
-                    <div className="text-sm font-bold text-[#12151C] mt-1">{s.value}</div>
+                {/* Bottom Overlay Label */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
+                  <div>
+                    <div className="text-lg font-bold tracking-tight">StayB Properties</div>
+                    <div className="text-xs text-white/75 font-normal">Modern boutique hospitality</div>
                   </div>
-                ))}
+                  <span className="text-[11px] font-mono text-[#3B82F6] font-semibold bg-white/10 px-2 py-0.5 rounded backdrop-blur-sm">
+                    NivaOps Customer
+                  </span>
+                </div>
               </div>
 
-              <div className="bg-[#FFFFFF] p-4 rounded-lg border border-[#E5E7EB] text-xs space-y-2">
-                <div className="text-[10px] font-mono uppercase text-[#718096]">Operational Integration Model</div>
-                <div className="flex items-center justify-between pt-1">
-                  <span className="font-semibold text-[#12151C]">Quniverze</span>
-                  <span className="text-[10px] font-mono text-[#3B82F6]">Builds & Operates →</span>
-                  <span className="font-semibold text-[#12151C]">NivaOps</span>
+              {/* Lower Operational Data Grid */}
+              <div className="p-6 bg-white border-t border-[#E5E7EB]">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center sm:text-left">
+                  {CUSTOMER_PROOF_CONTENT.stats.map((s) => (
+                    <div key={s.label} className="p-2.5 rounded-lg bg-[#F4F6F9] border border-[#E5E7EB]">
+                      <div className="text-[10px] font-mono text-[#12151C]/50 uppercase tracking-tight truncate">{s.label}</div>
+                      <div className="text-xs sm:text-sm font-bold text-[#12151C] mt-0.5 truncate">{s.value}</div>
+                    </div>
+                  ))}
                 </div>
-                <div className="flex items-center justify-between pt-1 border-t border-[#E5E7EB]">
-                  <span className="font-semibold text-[#12151C]">StayB</span>
-                  <span className="text-[10px] font-mono text-[#3B82F6]">Runs Operations on →</span>
-                  <span className="font-semibold text-[#12151C]">NivaOps PMS</span>
-                </div>
-                <div className="flex items-center justify-between pt-1 border-t border-[#E5E7EB]">
-                  <span className="font-semibold text-[#12151C]">Guest Experience</span>
-                  <span className="text-[10px] font-mono text-[#12151C]">Built by Quniverze →</span>
-                  <span className="font-semibold text-[#12151C]">StayB Website</span>
+
+                <div className="mt-4 pt-4 border-t border-[#E5E7EB] flex items-center justify-between text-[11px] text-[#12151C]/70">
+                  <span>Relationship: Active Customer & Software Partner</span>
+                  <span className="font-mono text-[10px] text-[#3B82F6]">VERIFIED PRODUCTION</span>
                 </div>
               </div>
             </div>

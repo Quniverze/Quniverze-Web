@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
               {FOOTER_CONTENT.tagline}
             </p>
             <p className="text-xs text-[#A0AEC0]/70 mt-4 leading-relaxed max-w-xs font-normal">
-              Software products owned and operated. Thoughtful digital systems built for selected businesses.
+              Software products owned and operated. Thoughtful digital systems engineered for selected businesses.
             </p>
           </div>
 
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-[#F4F6F9]/80 hover:text-white transition-colors"
+                        className="text-[#F4F6F9]/75 hover:text-white transition-colors"
                       >
                         {link.label}
                       </a>
@@ -42,11 +42,11 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Micro-bar */}
+        {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#A0AEC0] font-mono gap-4">
           <div>{FOOTER_CONTENT.copyright}</div>
           <div className="flex items-center gap-4">
-            <span>Graphite · Electric Blue · Cloud · Slate</span>
+            <span>Built with precision. Operating in the real world.</span>
           </div>
         </div>
       </div>

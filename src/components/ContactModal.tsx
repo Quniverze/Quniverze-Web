@@ -17,6 +17,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
     message: ''
   });
 
+
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) onClose();
@@ -48,7 +50,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#12151C]/75 backdrop-blur-sm animate-in fade-in duration-150">
       <div
-        className="relative w-full max-w-lg bg-[#FFFFFF] rounded-xl shadow-2xl border border-[#E5E7EB] overflow-hidden"
+        className="relative w-full max-w-lg bg-[#FFFFFF] rounded-2xl shadow-2xl border border-[#E5E7EB] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -60,10 +62,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
               DIRECT ENGAGEMENT
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-[#12151C] tracking-tight mt-1">
-              Start a conversation.
+              Start a project.
             </h3>
             <p className="text-xs text-[#718096] mt-1 font-normal">
-              Tell us what you're building. We review inquiries directly.
+              Tell us what you're building. We review inquiries directly with our engineering team.
             </p>
           </div>
           <button
@@ -129,7 +131,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
-                    Company
+                    Company / Organization
                   </label>
                   <input
                     type="text"
@@ -141,7 +143,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
                 </div>
                 <div>
                   <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
-                    Subject Area
+                    Inquiry Topic
                   </label>
                   <select
                     value={formData.projectType}
@@ -149,8 +151,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
                     className="w-full px-3.5 py-2.5 rounded-lg border border-[#E5E7EB] text-[#12151C] focus:outline-none focus:border-[#3B82F6] bg-[#F4F6F9]"
                   >
                     <option value="Selective Digital Product">Selective Digital Product</option>
-                    <option value="NivaOps Inquiry">NivaOps Inquiry</option>
+                    <option value="NivaOps Property Operations">NivaOps Property Operations</option>
                     <option value="Quniverze CRM Early Access">Quniverze CRM Early Access</option>
+                    <option value="Careers / Engineering Roles">Careers / Engineering Roles</option>
                     <option value="General Conversation">General Conversation</option>
                   </select>
                 </div>
@@ -158,7 +161,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, def
 
               <div>
                 <label className="block text-[11px] font-semibold text-[#12151C] mb-1 font-mono uppercase">
-                  Project Context *
+                  Project Context / Message *
                 </label>
                 <textarea
                   required

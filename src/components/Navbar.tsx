@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
       className={`sticky top-0 z-40 w-full transition-all duration-200 ${
         isScrolled
           ? 'bg-[#F4F6F9]/95 backdrop-blur-md border-b border-[#E5E7EB] py-3.5'
-          : 'bg-[#F4F6F9] py-5 border-b border-transparent'
+          : 'bg-[#F4F6F9] py-5 border-b border-[#E5E7EB]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-[#12151C]/80 hover:text-[#12151C] transition-colors duration-150"
+              className="text-sm font-medium text-[#12151C]/75 hover:text-[#12151C] transition-colors duration-150"
             >
               {link.label}
             </a>
@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
             onClick={onOpenContact}
             className="group inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-[#12151C] text-[#F4F6F9] hover:bg-[#232834] active:scale-[0.98] transition-all duration-150"
           >
-            <span>Start a conversation</span>
+            <span>Start a project</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#3B82F6] group-hover:translate-x-0.5 transition-transform duration-150" />
           </button>
         </div>
@@ -96,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               }}
               className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold rounded-lg bg-[#12151C] text-[#F4F6F9]"
             >
-              <span>Start a conversation</span>
+              <span>Start a project</span>
               <ArrowRight className="w-4 h-4 text-[#3B82F6]" />
             </button>
           </div>

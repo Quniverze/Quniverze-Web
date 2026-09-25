@@ -21,7 +21,7 @@ export const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ClientWorkItem | null>(null);
 
   const handleOpenContact = (subject?: string) => {
-    setContactSubject(subject || 'General Inquiry');
+    setContactSubject(subject || 'Selective Digital Product');
     setIsContactOpen(true);
   };
 
@@ -35,17 +35,17 @@ export const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[#F4F6F9] text-[#12151C] font-sans selection:bg-[#12151C] selection:text-white">
       {/* 01 Navigation */}
-      <Navbar onOpenContact={() => handleOpenContact('Direct Conversation')} />
+      <Navbar onOpenContact={() => handleOpenContact('Selective Digital Product')} />
 
-      {/* Main Flow adhering to Section 27 Information Architecture */}
+      {/* Main Flow */}
       <main className="flex-1">
         {/* 02 Hero */}
         <Hero
           onExploreProducts={() => handleScrollTo('products')}
-          onWorkWithUs={() => handleScrollTo('contact')}
+          onStartProject={() => handleOpenContact('Selective Digital Product')}
         />
 
-        {/* 03 What We Do / Business Model */}
+        {/* 03 Business Model */}
         <BusinessModelSection
           onExploreProducts={() => handleScrollTo('products')}
           onExploreWork={() => handleScrollTo('work')}
@@ -64,25 +64,30 @@ export const App: React.FC = () => {
         {/* 06 Selective Work (Boven Frontier, IGCC, StayB) */}
         <ClientWorkSection
           onSelectProject={(project) => setSelectedProject(project)}
+          onStartProject={() => handleOpenContact('Selective Digital Product')}
         />
 
         {/* 07 How We Work (01 → 04 Process) */}
         <ProcessSection />
 
-        {/* 08 Why Quniverze & About */}
-        <AboutSection />
+        {/* 08 Why Quniverze, About & Careers */}
+        <AboutSection
+          onOpenCareers={() => handleOpenContact('Careers / Engineering Roles')}
+        />
 
-        {/* 09 Contact / Need Software? */}
+        {/* 09 Contact / Final CTA */}
         <CTASection
-          onStartConversation={() => handleOpenContact('Project Scoping')}
+          onStartProject={() => handleOpenContact('Selective Digital Product')}
+          onExploreProducts={() => handleScrollTo('products')}
         />
       </main>
 
       {/* 10 Footer */}
       <Footer />
 
-      {/* Interactive Inquiries & Deep-Dives */}
+      {/* Interactive Modals */}
       <ContactModal
+        key={`${contactSubject}-${isContactOpen}`}
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
         defaultSubject={contactSubject}
